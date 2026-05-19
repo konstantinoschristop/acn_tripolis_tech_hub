@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.10);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #460073 0%, #7B2D8B 60%, #A100FF 100%);
+    color: #fff;
+    padding: 40px 50px 30px;
+    position: relative;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .logo-block .company { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
+  .logo-block .hub { font-size: 13px; font-weight: 400; opacity: 0.85; margin-top: 2px; }
+  .logo-accent {
+    width: 44px; height: 44px;
+    border: 3px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700;
+  }
+  .header-title {
+    margin-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-top: 18px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .header-title h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+  .header-title .period { font-size: 13px; opacity: 0.80; }
+  .badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  /* META BAR */
+  .meta-bar {
+    background: #f9f5ff;
+    border-bottom: 1px solid #e8dcf5;
+    padding: 12px 50px;
+    display: flex; gap: 40px;
+  }
+  .meta-item { display: flex; flex-direction: column; }
+  .meta-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #8b8b9e; }
+  .meta-value { font-size: 12px; font-weight: 600; color: #460073; margin-top: 1px; }
+
+  /* CONTENT */
+  .content { padding: 40px 50px; }
+
+  section { margin-bottom: 36px; }
+
+  .section-title {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.2px; color: #A100FF;
+    border-bottom: 2px solid #A100FF;
+    padding-bottom: 6px; margin-bottom: 18px;
+  }
+
+  /* KPI CARDS */
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin-bottom: 10px;
+  }
+  .kpi-card {
+    background: #fafafa; border: 1px solid #ece8f5;
+    border-radius: 8px; padding: 16px 14px;
+    position: relative; overflow: hidden;
+  }
+  .kpi-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, #A100FF, #7B2D8B);
+  }
+  .kpi-label { font-size: 10px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
+  .kpi-value { font-size: 22px; font-weight: 700; color: #1a1a2e; margin: 4px 0 2px; }
+  .kpi-change { font-size: 11px; font-weight: 600; }
+  .up { color: #2ecc71; } .down { color: #e74c3c; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  thead tr { background: #460073; color: #fff; }
+  thead th { padding: 10px 14px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.5px; }
+  thead th:not(:first-child) { text-align: right; }
+  tbody tr:nth-child(even) { background: #faf8ff; }
+  tbody tr:hover { background: #f3ecff; }
+  tbody td { padding: 9px 14px; border-bottom: 1px solid #f0ecf8; }
+  tbody td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+  .total-row td { font-weight: 700; background: #f0e8ff !important; color: #460073; border-top: 2px solid #A100FF; }
+  .subtotal-row td { font-weight: 600; font-style: italic; color: #555; background: #fdf9ff !important; }
+  .indent { padding-left: 28px !important; color: #555; }
+
+  /* TWO-COL LAYOUT */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  /* PROGRESS BARS */
+  .bar-row { margin-bottom: 12px; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; }
+  .bar-label span:last-child { font-weight: 600; color: #460073; }
+  .bar-track { background: #ece8f5; border-radius: 4px; height: 8px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #A100FF, #7B2D8B); }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+    border-left: 4px solid #A100FF;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-top: 10px;
+  }
+  .highlight-box p { font-size: 12.5px; color: #333; line-height: 1.7; }
+
+  /* OUTLOOK TABLE */
+  .outlook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .outlook-card {
+    border: 1px solid #e0d8f0; border-radius: 8px; padding: 16px;
+    text-align: center;
+  }
+  .outlook-card .ok-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; color: #888; font-weight: 600; margin-bottom: 8px; }
+  .outlook-card .ok-value { font-size: 19px; font-weight: 700; color: #460073; }
+  .outlook-card .ok-label { font-size: 11px; color: #aaa; margin-top: 2px; }
+
+  /* FOOTER */
+  .footer {
+    background: #460073; color: rgba(255,255,255,0.7);
+    padding: 18px 50px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10.5px;
+  }
+  .footer strong { color: #fff; }
+
+  /* SIGNATURE */
+  .sig-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 10px; }
+  .sig-block { border-top: 1.5px solid #ccc; padding-top: 8px; }
+  .sig-name { font-weight: 700; font-size: 12px; }
+  .sig-title { font-size: 11px; color: #777; margin-top: 2px; }
+
+  .text-right { text-align: right; }
+  .text-muted { color: #888; }
+  .green { color: #2ecc71; font-weight: 600; }
+  .red { color: #e74c3c; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="logo-block">
+        <div class="company">Accenture</div>
+        <div class="hub">Tripoli Tech Hub — Peloponissos Operations</div>
+      </div>
+      <div class="logo-accent">A</div>
+    </div>
+    <div class="header-title">
+      <div>
+        <h1>Q2 Financial Report</h1>
+        <div class="period">For the Quarter Ended June 30, 2025</div>
+      </div>
+      <div class="badge">Confidential</div>
+    </div>
+  </div>
+
+  <!-- META BAR -->
+  <div class="meta-bar">
+    <div class="meta-item"><span class="meta-label">Report Date</span><span class="meta-value">July 18, 2025</span></div>
+    <div class="meta-item"><span class="meta-label">Prepared By</span><span class="meta-value">Finance & Control – Tripoli Hub</span></div>
+    <div class="meta-item"><span class="meta-label">Reporting Currency</span><span class="meta-value">USD (thousands)</span></div>
+    <div class="meta-item"><span class="meta-label">Fiscal Year</span><span class="meta-value">FY2025 (Oct – Sep)</span></div>
+    <div class="meta-item"><span class="meta-label">Review Status</span><span class="meta-value">Internal — Pending CFO Sign-off</span></div>
+  </div>
+
+  <div class="content">
+
+    <!-- EXECUTIVE SUMMARY -->
+    <section>
+      <div class="section-title">Executive Summary</div>
+      <div class="highlight-box">
+        <p>
+          Accenture Tripoli Tech Hub delivered a strong Q2 FY2025, with total net revenues of <strong>$4.83M</strong>, representing
+          a <strong>12.4% year-over-year</strong> increase driven by accelerated demand in cloud transformation and digital advisory services.
+          Operating income reached <strong>$1.02M</strong> (21.1% margin), ahead of the Q2 target of 18.5%.
+          Headcount grew to <strong>214 FTEs</strong>, with utilization rates at <strong>87%</strong>, reflecting
+          disciplined resource management. Cash position remains solid at <strong>$2.1M</strong>, with no outstanding long-term debt.
+          The hub is on track to meet full-year FY2025 revenue guidance of <strong>$19.2M</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- KPI CARDS -->
+    <section>
+      <div class="section-title">Key Performance Indicators</div>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Net Revenue</div>
+          <div class="kpi-value">$4.83M</div>
+          <div class="kpi-change up">▲ 12.4% YoY</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Operating Income</div>
+          <div class="kpi-value">$1.02M</div>
+          <div class="kpi-change up">▲ 8.9% YoY</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Net Income</div>
+          <div class="kpi-value">$742K</div>
+          <div class="kpi-change up">▲ 6.1% YoY</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">EBITDA Margin</div>
+          <div class="kpi-value">24.7%</div>
+          <div class="kpi-change up">▲ 1.3pp YoY</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Billable Headcount</div>
+          <div class="kpi-value">214</div>
+          <div class="kpi-change up">▲ 18 FTEs QoQ</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Utilization Rate</div>
+          <div class="kpi-value">87%</div>
+          <div class="kpi-change up">▲ 3pp QoQ</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Cash & Equivalents</div>
+          <div class="kpi-value">$2.1M</div>
+          <div class="kpi-change down">▼ $0.3M QoQ</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">DSO (Days)</div>
+          <div class="kpi-value">38</div>
+          <div class="kpi-change up">▲ improved −4d</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- P&L -->
+    <section>
+      <div class="section-title">Income Statement (P&L) — Q2 FY2025 vs Q2 FY2024</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Line Item</th>
+            <th>Q2 FY2025 ($K)</th>
+            <th>Q2 FY2024 ($K)</th>
+            <th>Variance ($K)</th>
+            <th>Variance (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Gross Revenue</strong></td><td>5,210</td><td>4,630</td><td>+580</td><td class="green">+12.5%</td></tr>
+          <tr><td class="indent">Less: Reimbursements & Pass-throughs</td><td>(382)</td><td>(320)</td><td>(62)</td><td class="red">−19.4%</td></tr>
+          <tr class="subtotal-row"><td><strong>Net Revenue</strong></td><td><strong>4,828</strong></td><td><strong>4,310</strong></td><td><strong>+518</strong></td><td class="green">+12.0%</td></tr>
+          <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>Cost of Services (CoS)</strong></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="indent">Personnel & Benefits</td><td>(2,480)</td><td>(2,210)</td><td>(270)</td><td class="red">−12.2%</td></tr>
+          <tr><td class="indent">Subcontractors & Freelancers</td><td>(320)</td><td>(290)</td><td>(30)</td><td class="red">−10.3%</td></tr>
+          <tr><td class="indent">Technology & Licensing</td><td>(215)</td><td>(175)</td><td>(40)</td><td class="red">−22.9%</td></tr>
+          <tr class="subtotal-row"><td><strong>Total Cost of Services</strong></td><td><strong>(3,015)</strong></td><td><strong>(2,675)</strong></td><td><strong>(340)</strong></td><td class="red">−12.7%</td></tr>
+          <tr class="subtotal-row"><td><strong>Gross Profit</strong></td><td><strong>1,813</strong></td><td><strong>1,635</strong></td><td><strong>+178</strong></td><td class="green">+10.9%</td></tr>
+          <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>Operating Expenses (OpEx)</strong></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="indent">Selling & Business Development</td><td>(285)</td><td>(255)</td><td>(30)</td><td class="red">−11.8%</td></tr>
+          <tr><td class="indent">General & Administrative</td><td>(340)</td><td>(310)</td><td>(30)</td><td class="red">−9.7%</td></tr>
+          <tr><td class="indent">Facilities & Infrastructure</td><td>(168)</td><td>(135)</td><td>(33)</td><td class="red">−24.4%</td></tr>
+          <tr class="subtotal-row"><td><strong>Total OpEx</strong></td><td><strong>(793)</strong></td><td><strong>(700)</strong></td><td><strong>(93)</strong></td><td class="red">−13.3%</td></tr>
+          <tr class="subtotal-row"><td><strong>EBIT / Operating Income</strong></td><td><strong>1,020</strong></td><td><strong>935</strong></td><td><strong>+85</strong></td><td class="green">+9.1%</td></tr>
+          <tr><td class="indent">Depreciation & Amortization</td><td>(82)</td><td>(70)</td><td>(12)</td><td class="red">−17.1%</td></tr>
+          <tr class="subtotal-row"><td><strong>EBITDA</strong></td><td><strong>1,102</strong></td><td><strong>1,005</strong></td><td><strong>+97</strong></td><td class="green">+9.7%</td></tr>
+          <tr><td class="indent">Interest Income</td><td>22</td><td>18</td><td>+4</td><td class="green">+22.2%</td></tr>
+          <tr><td class="indent">Interest Expense</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td class="indent">Income Tax (25%)</td><td>(300)</td><td>(267)</td><td>(33)</td><td class="red">−12.4%</td></tr>
+          <tr class="total-row"><td><strong>Net Income</strong></td><td><strong>742</strong></td><td><strong>699</strong></td><td><strong>+43</strong></td><td class="green">+6.2%</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- REVENUE BY SERVICE LINE -->
+    <section>
+      <div class="section-title">Revenue by Service Line</div>
+      <div class="two-col">
+        <table>
+          <thead>
+            <tr><th>Service Line</th><th>$K</th><th>% of Rev</th><th>YoY</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cloud Transformation</td><td>1,540</td><td>31.9%</td><td class="green">+18%</td></tr>
+            <tr><td>Digital Advisory</td><td>1,120</td><td>23.2%</td><td class="green">+14%</td></tr>
+            <tr><td>Cybersecurity Services</td><td>780</td><td>16.2%</td><td class="green">+22%</td></tr>
+            <tr><td>Data & AI Analytics</td><td>640</td><td>13.3%</td><td class="green">+31%</td></tr>
+            <tr><td>Managed Services</td><td>490</td><td>10.2%</td><td class="green">+4%</td></tr>
+            <tr><td>Training & Enablement</td><td>258</td><td>5.3%</td><td class="red">−3%</td></tr>
+            <tr class="total-row"><td><strong>Total</strong></td><td><strong>4,828</strong></td><td><strong>100%</strong></td><td class="green"><strong>+12.4%</strong></td></tr>
+          </tbody>
+        </table>
+        <div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Cloud Transformation</span><span>31.9%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Digital Advisory</span><span>23.2%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Cybersecurity</span><span>16.2%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:51%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Data & AI Analytics</span><span>13.3%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:42%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Managed Services</span><span>10.2%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:32%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Training & Enablement</span><span>5.3%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:17%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BALANCE SHEET HIGHLIGHTS -->
+    <section>
+      <div class="section-title">Balance Sheet Highlights — as of June 30, 2025</div>
+      <div class="two-col">
+        <table>
+          <thead><tr><th>Assets</th><th>$K</th></tr></thead>
+          <tbody>
+            <tr><td class="indent">Cash & Equivalents</td><td>2,102</td></tr>
+            <tr><td class="indent">Accounts Receivable</td><td>1,840</td></tr>
+            <tr><td class="indent">Prepaid & Other Current Assets</td><td>310</td></tr>
+            <tr class="subtotal-row"><td><strong>Total Current Assets</strong></td><td><strong>4,252</strong></td></tr>
+            <tr><td class="indent">PP&E (net)</td><td>620</td></tr>
+            <tr><td class="indent">Intangibles & Software</td><td>185</td></tr>
+            <tr><td class="indent">Right-of-Use Assets</td><td>430</td></tr>
+            <tr class="total-row"><td><strong>Total Assets</strong></td><td><strong>5,487</strong></td></tr>
+          </tbody>
+        </table>
+        <table>
+          <thead><tr><th>Liabilities & Equity</th><th>$K</th></tr></thead>
+          <tbody>
+            <tr><td class="indent">Accounts Payable</td><td>510</td></tr>
+            <tr><td class="indent">Accrued Liabilities</td><td>380</td></tr>
+            <tr><td class="indent">Deferred Revenue</td><td>220</td></tr>
+            <tr class="subtotal-row"><td><strong>Total Current Liabilities</strong></td><td><strong>1,110</strong></td></tr>
+            <tr><td class="indent">Lease Obligations (LT)</td><td>415</td></tr>
+            <tr class="subtotal-row"><td><strong>Total Liabilities</strong></td><td><strong>1,525</strong></td></tr>
+            <tr><td class="indent">Retained Earnings</td><td>3,220</td></tr>
+            <tr><td class="indent">Intercompany Equity</td><td>742</td></tr>
+            <tr class="total-row"><td><strong>Total Liabilities & Equity</strong></td><td><strong>5,487</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CASH FLOW -->
+    <section>
+      <div class="section-title">Cash Flow Summary — Q2 FY2025</div>
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Q2 FY2025 ($K)</th><th>Q1 FY2025 ($K)</th><th>Change</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cash from Operations</td><td>890</td><td>820</td><td class="green">+70</td></tr>
+          <tr><td>Cash used in Investing</td><td>(145)</td><td>(200)</td><td class="green">+55</td></tr>
+          <tr><td>Cash from / (used in) Financing</td><td>(45)</td><td>(30)</td><td class="red">−15</td></tr>
+          <tr class="subtotal-row"><td><strong>Net Change in Cash</strong></td><td><strong>700</strong></td><td><strong>590</strong></td><td class="green"><strong>+110</strong></td></tr>
+          <tr><td>Opening Cash Balance</td><td>1,402</td><td>812</td><td>—</td></tr>
+          <tr class="total-row"><td><strong>Closing Cash Balance</strong></td><td><strong>2,102</strong></td><td><strong>1,402</strong></td><td class="green"><strong>+700</strong></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Q3 OUTLOOK -->
+    <section>
+      <div class="section-title">Q3 FY2025 Outlook & Guidance</div>
+      <div class="outlook-grid">
+        <div class="outlook-card">
+          <div class="ok-title">Net Revenue Target</div>
+          <div class="ok-value">$5.1M</div>
+          <div class="ok-label">+5.6% vs Q2 Actual</div>
+        </div>
+        <div class="outlook-card">
+          <div class="ok-title">Operating Margin Target</div>
+          <div class="ok-value">22.0%</div>
+          <div class="ok-label">+0.9pp vs Q2</div>
+        </div>
+        <div class="outlook-card">
+          <div class="ok-title">Headcount (EoP)</div>
+          <div class="ok-value">228</div>
+          <div class="ok-label">+14 net new hires</div>
+        </div>
+        <div class="outlook-card">
+          <div class="ok-title">FY2025 Revenue Guidance</div>
+          <div class="ok-value">$19.2M</div>
+          <div class="ok-label">Maintained</div>
+        </div>
+        <div class="outlook-card">
+          <div class="ok-title">Key Growth Driver</div>
+          <div class="ok-value">Data & AI</div>
+          <div class="ok-label">Largest YoY uplift</div>
+        </div>
+        <div class="outlook-card">
+          <div class="ok-title">Target Utilization</div>
+          <div class="ok-value">89%</div>
+          <div class="ok-label">+2pp vs Q2</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNATURES -->
+    <section>
+      <div class="section-title">Approvals & Certifications</div>
+      <p style="font-size:12px; color:#555; margin-bottom:18px;">
+        The undersigned certify that the financial information presented in this report is accurate, complete, and prepared in accordance with Accenture's internal financial reporting standards.
+      </p>
+      <div class="sig-row">
+        <div class="sig-block">
+          <div class="sig-name">Khalid Al-Mansouri</div>
+          <div class="sig-title">Hub Managing Director</div>
+          <div class="sig-title text-muted">Accenture Tripoli Tech Hub</div>
+        </div>
+        <div class="sig-block">
+          <div class="sig-name">Nadia Bensalem</div>
+          <div class="sig-title">Hub Finance Controller</div>
+          <div class="sig-title text-muted">Finance & Accounting</div>
+        </div>
+        <div class="sig-block">
+          <div class="sig-name">Omar Tarhuni</div>
+          <div class="sig-title">Regional CFO, MEA</div>
+          <div class="sig-title text-muted">Pending Sign-off</div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /content -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div><strong>Accenture Tripoli Tech Hub</strong> — Q2 FY2025 Financial Report &nbsp;|&nbsp; Confidential &amp; Proprietary</div>
+    <div>© 2025 Accenture. All rights reserved. &nbsp;|&nbsp; Page 1 of 1</div>
+  </div>
+
+</div>
+</body>
+</html>

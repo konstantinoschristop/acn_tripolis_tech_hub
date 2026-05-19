@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#1a0030;display:flex;flex-direction:column;align-items:center;gap:0;padding:0;}
+
+/* ─── PAGE SHELL ─── */
+.page{
+  width:794px; min-height:1123px;
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+  page-break-after:always;
+  margin-bottom:32px;
+  box-shadow:0 8px 40px rgba(0,0,0,0.4);
+}
+
+/* ══════════════════════════════════
+   PAGE 1 — COVER
+══════════════════════════════════ */
+.cover{
+  background:linear-gradient(150deg,#2a0048 0%,#460073 40%,#7B2D8B 75%,#A100FF 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0;
+}
+.cover-circles::before,.cover-circles::after{content:'';position:absolute;border-radius:50%;pointer-events:none;}
+.cover-ring{
+  position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.08);
+}
+.cover-logo-line{
+  font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);margin-bottom:36px;
+}
+.cover-cross{position:relative;width:64px;height:64px;margin-bottom:28px;}
+.cover-cross::before{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:13px;height:64px;background:rgba(255,255,255,0.88);border-radius:4px;}
+.cover-cross::after{content:'';position:absolute;top:17px;left:0;width:64px;height:13px;background:rgba(255,255,255,0.88);border-radius:4px;}
+.cover h1{font-size:52px;font-weight:700;color:#fff;letter-spacing:-1px;text-align:center;line-height:1.15;margin-bottom:10px;}
+.cover h2{font-size:22px;font-weight:300;color:rgba(255,255,255,0.7);text-align:center;margin-bottom:48px;}
+.cover-divider{width:80px;height:3px;background:rgba(255,255,255,0.4);border-radius:2px;margin-bottom:48px;}
+.cover-meta{display:flex;gap:48px;}
+.cover-meta-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.cover-meta-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+.cover-meta-value{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);}
+.cover-bottom{
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(0,0,0,0.25);
+  padding:16px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.cover-bottom span{font-size:11px;color:rgba(255,255,255,0.5);}
+
+/* ══════════════════════════════════
+   PAGE 2 — OUR TEAM
+══════════════════════════════════ */
+.page-header-bar{
+  background:linear-gradient(135deg,#460073,#A100FF);
+  padding:28px 48px 22px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+}
+.page-header-bar .ph-title{font-size:26px;font-weight:700;color:#fff;}
+.page-header-bar .ph-sub{font-size:12px;color:rgba(255,255,255,0.65);}
+.page-header-bar .ph-logo{font-size:12px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;}
+.page-body{padding:40px 48px;}
+
+.team-photo-wrap{
+  width:100%;height:420px;
+  border-radius:12px;overflow:hidden;
+  border:3px solid #ede5f8;
+  position:relative;
+  background:#1a0030;
+  display:flex;align-items:center;justify-content:center;
+}
+.team-photo-wrap img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+/* ← REPLACE THE src BELOW WITH YOUR PHOTO PATH → */
+.team-photo-placeholder{
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.team-photo-placeholder .icon{font-size:48px;opacity:0.4;}
+.team-photo-placeholder p{font-size:13px;color:rgba(255,255,255,0.5);text-align:center;}
+.team-caption{
+  margin-top:20px;
+  background:linear-gradient(135deg,#faf4ff,#f0e8ff);
+  border-left:4px solid #A100FF;border-radius:0 10px 10px 0;
+  padding:14px 20px;
+}
+.team-caption p{font-size:13px;color:#460073;font-style:italic;line-height:1.7;}
+
+/* ══════════════════════════════════
+   PAGE 3 — ORG CHART
+══════════════════════════════════ */
+.org-wrap{padding:32px 48px;}
+.org-section-label{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+  color:#A100FF;border-bottom:2px solid #A100FF;padding-bottom:6px;margin-bottom:28px;
+}
+/* Org chart SVG inline */
+.org-svg-wrap svg{width:100%;}
+
+/* ══════════════════════════════════
+   PAGE 4 — Q2 REPORT (condensed)
+══════════════════════════════════ */
+.report-body{padding:28px 48px 32px;}
+.report-section{margin-bottom:26px;}
+.section-title{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;
+  color:#A100FF;border-bottom:2px solid #A100FF;padding-bottom:5px;margin-bottom:14px;
+}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:4px;}
+.kpi-card{
+  background:#fafafa;border:1px solid #ece8f5;border-radius:8px;padding:12px 10px;
+  position:relative;overflow:hidden;
+}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#A100FF,#7B2D8B);}
+.kpi-label{font-size:9px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+.kpi-value{font-size:18px;font-weight:700;color:#1a1a2e;margin:3px 0 1px;}
+.kpi-change{font-size:10px;font-weight:600;}
+.up{color:#2ecc71;}.down{color:#e74c3c;}
+table{width:100%;border-collapse:collapse;font-size:11px;}
+thead tr{background:#460073;color:#fff;}
+thead th{padding:8px 10px;text-align:left;font-weight:600;font-size:10px;letter-spacing:0.4px;}
+thead th:not(:first-child){text-align:right;}
+tbody tr:nth-child(even){background:#faf8ff;}
+tbody td{padding:7px 10px;border-bottom:1px solid #f0ecf8;}
+tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;}
+.total-row td{font-weight:700;background:#f0e8ff!important;color:#460073;border-top:2px solid #A100FF;}
+.subtotal-row td{font-weight:600;font-style:italic;color:#555;background:#fdf9ff!important;}
+.indent{padding-left:22px!important;color:#555;}
+.green{color:#2ecc71;font-weight:600;}.red{color:#e74c3c;font-weight:600;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.bar-row{margin-bottom:9px;}
+.bar-label{display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;}
+.bar-label span:last-child{font-weight:600;color:#460073;}
+.bar-track{background:#ece8f5;border-radius:3px;height:6px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#A100FF,#7B2D8B);}
+
+/* ══════════════════════════════════
+   PAGE 5 — EASTER CARD
+══════════════════════════════════ */
+.easter-page{
+  background:linear-gradient(150deg,#2a0048 0%,#460073 40%,#7B2D8B 80%,#A100FF 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:60px 80px;
+  gap:0;
+}
+.easter-inner{
+  background:rgba(255,255,255,0.96);
+  border-radius:20px;width:100%;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.easter-header{
+  background:linear-gradient(135deg,#460073,#7B2D8B,#A100FF);
+  padding:32px 40px 24px;text-align:center;
+}
+.easter-logo-line{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:16px;}
+.easter-cross{position:relative;width:44px;height:44px;margin:0 auto 14px;}
+.easter-cross::before{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:9px;height:44px;background:rgba(255,255,255,0.85);border-radius:3px;}
+.easter-cross::after{content:'';position:absolute;top:11px;left:0;width:44px;height:9px;background:rgba(255,255,255,0.85);border-radius:3px;}
+.easter-header h1{font-size:36px;font-weight:700;color:#fff;margin-bottom:6px;}
+.easter-header .sub{font-size:12px;color:rgba(255,255,255,0.7);}
+.candle-row{background:#fdf9ff;display:flex;justify-content:center;gap:24px;padding:14px 0 10px;border-bottom:1px solid #ede5f8;}
+.candle{display:flex;flex-direction:column;align-items:center;gap:1px;}
+.flame{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:12px solid #f5a623;border-radius:50% 50% 30% 30%;}
+.wick{width:2px;height:4px;background:#555;border-radius:1px;}
+.candle-body{width:10px;height:30px;background:linear-gradient(180deg,#f0e6f8,#d4aaff);border-radius:2px;}
+.candle-base{width:15px;height:4px;background:#b87fd4;border-radius:2px;}
+.easter-body{padding:28px 40px;}
+.easter-greeting{font-size:17px;font-weight:700;color:#460073;margin-bottom:16px;}
+.easter-body p{font-size:12.5px;color:#333;line-height:1.85;margin-bottom:14px;}
+.easter-highlight{background:linear-gradient(135deg,#faf4ff,#f3e8ff);border-left:4px solid #A100FF;border-radius:0 8px 8px 0;padding:13px 18px;margin:16px 0;}
+.easter-highlight p{font-size:12.5px;font-style:italic;color:#460073;margin:0;line-height:1.8;}
+.sig-section{margin-top:20px;padding-top:16px;border-top:1px solid #ede5f8;}
+.sig-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#A100FF;margin-bottom:12px;}
+.sig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.sig-name{font-size:12px;font-weight:600;color:#1a1a2e;}
+.sig-role{font-size:10px;color:#8b6fa8;}
+.easter-footer{background:linear-gradient(135deg,#460073,#7B2D8B);padding:14px 40px;display:flex;justify-content:space-between;align-items:center;}
+.easter-footer .f-logo{font-size:12px;font-weight:700;color:#fff;}
+.easter-footer .f-sub{font-size:9px;color:rgba(255,255,255,0.6);}
+.easter-footer .f-date{font-size:10px;color:rgba(255,255,255,0.65);text-align:right;}
+.eggs{display:flex;justify-content:center;gap:8px;margin:8px 0 0;font-size:20px;}
+
+/* ══════════════════════════════════
+   SHARED PAGE FOOTER
+══════════════════════════════════ */
+.page-footer{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(90deg,#460073,#7B2D8B);
+  padding:10px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.page-footer span{font-size:10px;color:rgba(255,255,255,0.6);}
+.page-footer .pf-logo{font-weight:700;color:rgba(255,255,255,0.85);}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGE 1 — COVER
+════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-ring" style="width:600px;height:600px;top:-200px;right:-200px;"></div>
+  <div class="cover-ring" style="width:350px;height:350px;bottom:-100px;left:-100px;"></div>
+  <div class="cover-ring" style="width:200px;height:200px;top:80px;left:60px;"></div>
+
+  <div class="cover-logo-line">Accenture · Tripoli Tech Hub</div>
+  <div class="cover-cross"></div>
+  <h1>Company<br/>Booklet</h1>
+  <h2>Peloponissos Operations</h2>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Fiscal Year</span>
+      <span class="cover-meta-value">FY2025</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Edition</span>
+      <span class="cover-meta-value">Q2 Report</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Status</span>
+      <span class="cover-meta-value">Confidential</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Year</span>
+      <span class="cover-meta-value">2026</span>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <span>Accenture Tripoli Tech Hub — Peloponissos Operations</span>
+    <span>© 2026 Accenture. All rights reserved.</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 2 — OUR TEAM
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header-bar">
+    <div>
+      <div class="ph-title">Our Team</div>
+      <div class="ph-sub">The people behind Accenture Tripoli Tech Hub</div>
+    </div>
+    <div class="ph-logo">ACCENTURE · TRIPOLI</div>
+  </div>
+  <div class="page-body">
+    <div class="team-photo-wrap">
+      <!--
+        ════════════════════════════════════════
+        ΟΔΗΓΙΑ: Αντικατέστησε το src="" παρακάτω
+        με το path της φωτογραφίας σου, π.χ.:
+        src="team.jpg"  ή  src="./images/team.jpg"
+        ════════════════════════════════════════
+      -->
+      <img src="" alt="Team Photo"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+           style="width:100%;height:100%;object-fit:cover;"/>
+      <div class="team-photo-placeholder" style="display:flex;position:absolute;">
+        <div class="icon">📷</div>
+        <p>Βάλε εδώ τη φωτογραφία της ομάδας<br/>
+        <small>Άλλαξε το <code>src=""</code> στο img tag με το path σου</small></p>
+      </div>
+    </div>
+    <div class="team-caption">
+      <p>
+        Η ομάδα μας στο Accenture Tripoli Tech Hub — λίγο δουλειά, λίγο καφές,
+        και πολύ πάθος για αυτό που κάνουμε. Μαζί χτίζουμε το μέλλον της τεχνολογίας
+        στην Πελοπόννησο. 🚀
+      </p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-logo">Accenture Tripoli Tech Hub</span>
+    <span>Our Team · Page 2</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 3 — ORG CHART
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header-bar">
+    <div>
+      <div class="ph-title">Leadership Structure</div>
+      <div class="ph-sub">Organizational Chart — FY2026</div>
+    </div>
+    <div class="ph-logo">ACCENTURE · TRIPOLI</div>
+  </div>
+  <div class="org-wrap">
+    <div class="org-section-label">Executive Leadership Team</div>
+    <div class="org-svg-wrap">
+      <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#460073"/>
+            <stop offset="100%" stop-color="#A100FF"/>
+          </linearGradient>
+        </defs>
+        <!-- top bar -->
+        <rect x="50" y="10" width="600" height="26" rx="5" fill="url(#hg)"/>
+        <text x="350" y="27" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.8)" letter-spacing="1.5">ACCENTURE TRIPOLI TECH HUB — LEADERSHIP</text>
+
+        <!-- CEO box -->
+        <rect x="240" y="56" width="220" height="66" rx="10" fill="#460073" stroke="#A100FF" stroke-width="1.5"/>
+        <rect x="240" y="56" width="220" height="6" rx="3" fill="#A100FF" opacity="0.7"/>
+        <text x="350" y="84" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="13" font-weight="600" fill="#fff">Christopoulos Ntinos</text>
+        <text x="350" y="106" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="11" fill="#d4aaff">CEO &amp; Co-founder</text>
+
+        <!-- vertical line down from CEO -->
+        <line x1="350" y1="122" x2="350" y2="165" stroke="#A100FF" stroke-width="1.5" opacity="0.5"/>
+        <!-- horizontal bar -->
+        <line x1="110" y1="165" x2="590" y2="165" stroke="#A100FF" stroke-width="1.5" opacity="0.35"/>
+        <!-- drops -->
+        <line x1="110" y1="165" x2="110" y2="195" stroke="#A100FF" stroke-width="1.5" opacity="0.35"/>
+        <line x1="350" y1="165" x2="350" y2="195" stroke="#A100FF" stroke-width="1.5" opacity="0.35"/>
+        <line x1="590" y1="165" x2="590" y2="195" stroke="#A100FF" stroke-width="1.5" opacity="0.35"/>
+
+        <!-- COO -->
+        <rect x="30" y="195" width="160" height="64" rx="10" fill="#2d0050" stroke="#7B2D8B" stroke-width="1"/>
+        <rect x="30" y="195" width="160" height="5" rx="2" fill="#7B2D8B" opacity="0.8"/>
+        <text x="110" y="222" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#e8d0ff">Tsitouras Nikos</text>
+        <text x="110" y="243" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="11" fill="#a87cc9">COO</text>
+        <rect x="50" y="268" width="120" height="20" rx="10" fill="#A100FF" opacity="0.15"/>
+        <text x="110" y="281" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#c97dff">Chief Operating Officer</text>
+
+        <!-- CTO -->
+        <rect x="270" y="195" width="160" height="64" rx="10" fill="#2d0050" stroke="#7B2D8B" stroke-width="1"/>
+        <rect x="270" y="195" width="160" height="5" rx="2" fill="#7B2D8B" opacity="0.8"/>
+        <text x="350" y="222" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#e8d0ff">Skount</text>
+        <text x="350" y="243" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="11" fill="#a87cc9">CTO</text>
+        <rect x="288" y="268" width="124" height="20" rx="10" fill="#A100FF" opacity="0.15"/>
+        <text x="350" y="281" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#c97dff">Chief Technology Officer</text>
+
+        <!-- CDO -->
+        <rect x="510" y="195" width="160" height="64" rx="10" fill="#2d0050" stroke="#7B2D8B" stroke-width="1"/>
+        <rect x="510" y="195" width="160" height="5" rx="2" fill="#7B2D8B" opacity="0.8"/>
+        <text x="590" y="222" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#e8d0ff">Kratimenos Andreas</text>
+        <text x="590" y="243" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="11" fill="#a87cc9">CDO</text>
+        <rect x="526" y="268" width="128" height="20" rx="10" fill="#A100FF" opacity="0.15"/>
+        <text x="590" y="281" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#c97dff">Chief Digital Officer</text>
+
+        <!-- footer line -->
+        <line x1="50" y1="315" x2="650" y2="315" stroke="#ede5f8" stroke-width="0.8"/>
+        <text x="350" y="330" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#aaa">Peloponissos Operations · FY2026</text>
+      </svg>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-logo">Accenture Tripoli Tech Hub</span>
+    <span>Leadership · Page 3</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 4 — Q2 FINANCIAL REPORT
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header-bar">
+    <div>
+      <div class="ph-title">Q2 Financial Report</div>
+      <div class="ph-sub">Quarter Ended June 30, 2025 · USD (thousands)</div>
+    </div>
+    <div class="ph-logo">ACCENTURE · TRIPOLI</div>
+  </div>
+  <div class="report-body">
+
+    <!-- KPIs -->
+    <div class="report-section">
+      <div class="section-title">Key Performance Indicators</div>
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-label">Net Revenue</div><div class="kpi-value">$4.83M</div><div class="kpi-change up">▲ 12.4% YoY</div></div>
+        <div class="kpi-card"><div class="kpi-label">Operating Income</div><div class="kpi-value">$1.02M</div><div class="kpi-change up">▲ 8.9% YoY</div></div>
+        <div class="kpi-card"><div class="kpi-label">Net Income</div><div class="kpi-value">$742K</div><div class="kpi-change up">▲ 6.1% YoY</div></div>
+        <div class="kpi-card"><div class="kpi-label">EBITDA Margin</div><div class="kpi-value">24.7%</div><div class="kpi-change up">▲ 1.3pp YoY</div></div>
+        <div class="kpi-card"><div class="kpi-label">Headcount</div><div class="kpi-value">214</div><div class="kpi-change up">▲ 18 FTEs QoQ</div></div>
+        <div class="kpi-card"><div class="kpi-label">Utilization</div><div class="kpi-value">87%</div><div class="kpi-change up">▲ 3pp QoQ</div></div>
+        <div class="kpi-card"><div class="kpi-label">Cash</div><div class="kpi-value">$2.1M</div><div class="kpi-change down">▼ $0.3M QoQ</div></div>
+        <div class="kpi-card"><div class="kpi-label">DSO (Days)</div><div class="kpi-value">38</div><div class="kpi-change up">▲ −4d improved</div></div>
+      </div>
+    </div>
+
+    <!-- P&L condensed -->
+    <div class="report-section">
+      <div class="section-title">Income Statement — Q2 FY2025 vs Q2 FY2024</div>
+      <table>
+        <thead><tr><th>Line Item</th><th>Q2 FY2025 ($K)</th><th>Q2 FY2024 ($K)</th><th>Var. (%)</th></tr></thead>
+        <tbody>
+          <tr><td>Gross Revenue</td><td>5,210</td><td>4,630</td><td class="green">+12.5%</td></tr>
+          <tr><td class="indent">Less: Reimbursements</td><td>(382)</td><td>(320)</td><td class="red">−19.4%</td></tr>
+          <tr class="subtotal-row"><td><strong>Net Revenue</strong></td><td><strong>4,828</strong></td><td><strong>4,310</strong></td><td class="green"><strong>+12.0%</strong></td></tr>
+          <tr><td class="indent">Personnel & Benefits</td><td>(2,480)</td><td>(2,210)</td><td class="red">−12.2%</td></tr>
+          <tr><td class="indent">Subcontractors</td><td>(320)</td><td>(290)</td><td class="red">−10.3%</td></tr>
+          <tr><td class="indent">Technology & Licensing</td><td>(215)</td><td>(175)</td><td class="red">−22.9%</td></tr>
+          <tr class="subtotal-row"><td><strong>Gross Profit</strong></td><td><strong>1,813</strong></td><td><strong>1,635</strong></td><td class="green"><strong>+10.9%</strong></td></tr>
+          <tr><td class="indent">Total OpEx</td><td>(793)</td><td>(700)</td><td class="red">−13.3%</td></tr>
+          <tr class="subtotal-row"><td><strong>EBIT</strong></td><td><strong>1,020</strong></td><td><strong>935</strong></td><td class="green"><strong>+9.1%</strong></td></tr>
+          <tr><td class="indent">Income Tax (25%)</td><td>(300)</td><td>(267)</td><td class="red">−12.4%</td></tr>
+          <tr class="total-row"><td><strong>Net Income</strong></td><td><strong>742</strong></td><td><strong>699</strong></td><td class="green"><strong>+6.2%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Revenue by Service Line -->
+    <div class="report-section">
+      <div class="section-title">Revenue by Service Line</div>
+      <div class="two-col">
+        <table>
+          <thead><tr><th>Service Line</th><th>$K</th><th>%</th><th>YoY</th></tr></thead>
+          <tbody>
+            <tr><td>Cloud Transformation</td><td>1,540</td><td>31.9%</td><td class="green">+18%</td></tr>
+            <tr><td>Digital Advisory</td><td>1,120</td><td>23.2%</td><td class="green">+14%</td></tr>
+            <tr><td>Cybersecurity</td><td>780</td><td>16.2%</td><td class="green">+22%</td></tr>
+            <tr><td>Data & AI Analytics</td><td>640</td><td>13.3%</td><td class="green">+31%</td></tr>
+            <tr><td>Managed Services</td><td>490</td><td>10.2%</td><td class="green">+4%</td></tr>
+            <tr><td>Training</td><td>258</td><td>5.3%</td><td class="red">−3%</td></tr>
+            <tr class="total-row"><td><strong>Total</strong></td><td><strong>4,828</strong></td><td><strong>100%</strong></td><td class="green"><strong>+12.4%</strong></td></tr>
+          </tbody>
+        </table>
+        <div style="padding-top:4px;">
+          <div class="bar-row"><div class="bar-label"><span>Cloud Transformation</span><span>31.9%</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>Digital Advisory</span><span>23.2%</span></div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>Cybersecurity</span><span>16.2%</span></div><div class="bar-track"><div class="bar-fill" style="width:51%"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>Data & AI</span><span>13.3%</span></div><div class="bar-track"><div class="bar-fill" style="width:42%"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>Managed Services</span><span>10.2%</span></div><div class="bar-track"><div class="bar-fill" style="width:32%"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>Training</span><span>5.3%</span></div><div class="bar-track"><div class="bar-fill" style="width:17%"></div></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span class="pf-logo">Accenture Tripoli Tech Hub</span>
+    <span>Q2 Financial Report · Page 4 · Confidential</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE 5 — EASTER CARD
+════════════════════════════════════════ -->
+<div class="page easter-page">
+  <div class="easter-inner">
+    <div class="easter-header">
+      <div class="easter-logo-line">Accenture · Tripoli Tech Hub</div>
+      <div class="easter-cross"></div>
+      <h1>Καλό Πάσχα</h1>
+      <div class="sub">Πασχαλινές Ευχές από την Ηγετική Ομάδα</div>
+    </div>
+    <div class="candle-row">
+      <div class="candle"><div class="flame"></div><div class="wick"></div><div class="candle-body"></div><div class="candle-base"></div></div>
+      <div class="candle"><div class="flame"></div><div class="wick"></div><div class="candle-body"></div><div class="candle-base"></div></div>
+      <div class="candle"><div class="flame"></div><div class="wick"></div><div class="candle-body"></div><div class="candle-base"></div></div>
+      <div class="candle"><div class="flame"></div><div class="wick"></div><div class="candle-body"></div><div class="candle-base"></div></div>
+      <div class="candle"><div class="flame"></div><div class="wick"></div><div class="candle-body"></div><div class="candle-base"></div></div>
+    </div>
+    <div class="easter-body">
+      <div class="easter-greeting">Αγαπητές συνάδελφοι και φίλοι,</div>
+      <p>Καθώς πλησιάζουν οι ημέρες της Μεγάλης Εβδομάδας και το φως της Ανάστασης είναι κοντά, η ηγετική ομάδα της <strong>Accenture Tripoli Tech Hub</strong> θέλει να σας εκφράσει τις πιο θερμές της ευχές για το Άγιο Πάσχα.</p>
+      <div class="easter-highlight">
+        <p>«Χριστός Ανέστη» — δύο λέξεις που κουβαλούν χαρά, ελπίδα και ανανέωση. Ας φέρουν αυτές οι μέρες γαλήνη, υγεία και πολύτιμες στιγμές με τους αγαπημένους σας.</p>
+      </div>
+      <p>Σας ευχόμαστε ολόψυχα <strong>Καλό Πάσχα</strong>, καλή Ανάσταση, υγεία και δύναμη για ό,τι έρθει μπροστά μας.</p>
+      <div class="eggs">🥚🐣🥚🐣🥚</div>
+      <div class="sig-section">
+        <div class="sig-label">Με εκτίμηση, η Ηγετική Ομάδα</div>
+        <div class="sig-grid">
+          <div><div class="sig-name">Christopoulos Ntinos</div><div class="sig-role">CEO &amp; Co-founder</div></div>
+          <div><div class="sig-name">Tsitouras Nikos</div><div class="sig-role">COO</div></div>
+          <div><div class="sig-name">Skount</div><div class="sig-role">CTO</div></div>
+          <div><div class="sig-name">Kratimenos Andreas</div><div class="sig-role">CDO</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="easter-footer">
+      <div><div class="f-logo">Accenture Tripoli Tech Hub</div><div class="f-sub">Peloponissos Operations</div></div>
+      <div class="f-date">Πάσχα 2026<br/>Χριστός Ανέστη!</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

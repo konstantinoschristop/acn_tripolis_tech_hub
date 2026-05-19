@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f0fa;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 16px;
+  }
+  .card {
+    background: #fff;
+    max-width: 620px; width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(70,0,115,0.13);
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #460073 0%, #7B2D8B 55%, #A100FF 100%);
+    padding: 36px 40px 28px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .header::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .header::after {
+    content: '';
+    position: absolute; bottom: -30px; left: -30px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .logo-line {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.65);
+    margin-bottom: 20px;
+  }
+  .cross-wrap {
+    display: flex; justify-content: center; margin-bottom: 18px;
+  }
+  .cross {
+    position: relative; width: 52px; height: 52px;
+  }
+  .cross::before {
+    content: '';
+    position: absolute; left: 50%; top: 0;
+    transform: translateX(-50%);
+    width: 10px; height: 52px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 3px;
+  }
+  .cross::after {
+    content: '';
+    position: absolute; top: 14px; left: 0;
+    width: 52px; height: 10px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 3px;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #fff;
+    letter-spacing: -0.5px; line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .header .subtitle {
+    font-size: 13px; color: rgba(255,255,255,0.72);
+    font-weight: 400;
+  }
+
+  /* CANDLE DIVIDER */
+  .divider {
+    background: linear-gradient(90deg, #460073, #A100FF, #460073);
+    height: 3px;
+  }
+  .candle-row {
+    background: #fdf9ff;
+    display: flex; justify-content: center; gap: 28px;
+    padding: 18px 0 14px;
+    border-bottom: 1px solid #ede5f8;
+  }
+  .candle { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .flame {
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 14px solid #f5a623;
+    border-radius: 50% 50% 30% 30%;
+    position: relative;
+  }
+  .flame::after {
+    content: '';
+    position: absolute; top: 4px; left: -3px;
+    width: 0; height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 8px solid #fcd462;
+  }
+  .wick { width: 2px; height: 5px; background: #555; border-radius: 1px; }
+  .candle-body {
+    width: 12px; height: 38px;
+    background: linear-gradient(180deg, #f0e6f8, #d4aaff);
+    border-radius: 2px;
+  }
+  .candle-base {
+    width: 18px; height: 5px;
+    background: #b87fd4;
+    border-radius: 2px;
+  }
+
+  /* BODY */
+  .body { padding: 32px 40px; }
+
+  .greeting {
+    font-size: 20px; font-weight: 700; color: #460073;
+    margin-bottom: 20px; line-height: 1.3;
+  }
+
+  .body p {
+    font-size: 14px; color: #333; line-height: 1.85;
+    margin-bottom: 16px;
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, #faf4ff, #f3e8ff);
+    border-left: 4px solid #A100FF;
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin: 22px 0;
+  }
+  .highlight p {
+    font-size: 14px; font-style: italic; color: #460073;
+    margin: 0; line-height: 1.8;
+  }
+
+  /* SIGNATURES */
+  .sig-section {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid #ede5f8;
+  }
+  .sig-title {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1px; color: #A100FF; margin-bottom: 16px;
+  }
+  .sig-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  }
+  .sig-item {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .sig-name { font-size: 13px; font-weight: 600; color: #1a1a2e; }
+  .sig-role { font-size: 11px; color: #8b6fa8; }
+
+  /* FOOTER */
+  .footer {
+    background: linear-gradient(135deg, #460073, #7B2D8B);
+    padding: 16px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer .f-logo { font-size: 13px; font-weight: 700; color: #fff; }
+  .footer .f-sub { font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+  .footer .f-date { font-size: 11px; color: rgba(255,255,255,0.65); text-align: right; }
+
+  .eggs {
+    display: flex; justify-content: center; gap: 10px;
+    margin: 10px 0 0;
+    font-size: 22px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-line">Accenture · Tripoli Tech Hub</div>
+    <div class="cross-wrap"><div class="cross"></div></div>
+    <h1>Καλό Πάσχα</h1>
+    <div class="subtitle">Πασχαλινές Ευχές από την Ηγετική Ομάδα</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CANDLES -->
+  <div class="candle-row">
+    <div class="candle">
+      <div class="flame"></div><div class="wick"></div>
+      <div class="candle-body"></div><div class="candle-base"></div>
+    </div>
+    <div class="candle">
+      <div class="flame"></div><div class="wick"></div>
+      <div class="candle-body"></div><div class="candle-base"></div>
+    </div>
+    <div class="candle">
+      <div class="flame"></div><div class="wick"></div>
+      <div class="candle-body"></div><div class="candle-base"></div>
+    </div>
+    <div class="candle">
+      <div class="flame"></div><div class="wick"></div>
+      <div class="candle-body"></div><div class="candle-base"></div>
+    </div>
+    <div class="candle">
+      <div class="flame"></div><div class="wick"></div>
+      <div class="candle-body"></div><div class="candle-base"></div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+    <div class="greeting">Αγαπητές συνάδελφοι και φίλοι,</div>
+
+    <p>
+      Καθώς πλησιάζουν οι ημέρες της Μεγάλης Εβδομάδας και το φως της Ανάστασης είναι κοντά,
+      η ηγετική ομάδα της <strong>Accenture Tripoli Tech Hub</strong> θέλει να σας εκφράσει
+      τις πιο θερμές της ευχές για το Άγιο Πάσχα.
+    </p>
+
+    <div class="highlight">
+      <p>
+        «Χριστός Ανέστη» — δύο λέξεις που κουβαλούν χαρά, ελπίδα και ανανέωση.
+        Ας φέρουν αυτές οι μέρες γαλήνη, υγεία και πολύτιμες στιγμές με τους αγαπημένους σας.
+      </p>
+    </div>
+
+    <p>
+      Αυτές οι γιορτινές ημέρες αποτελούν μια ευκαιρία να σταματήσουμε, να ξεκουραστούμε
+      και να θυμηθούμε ότι πίσω από κάθε επίτευγμα και κάθε πρότζεκτ, υπάρχουν άνθρωποι
+      αφοσιωμένοι, με πάθος και αξίες. Είμαστε υπερήφανοι για την ομάδα μας και ευγνώμονες
+      για την εμπιστοσύνη κάθε συνεργάτη και πελάτη μας.
+    </p>
+
+    <p>
+      Σας ευχόμαστε ολόψυχα <strong>Καλό Πάσχα</strong>, καλή Ανάσταση,
+      υγεία και δύναμη για ό,τι έρθει μπροστά μας.
+    </p>
+
+    <div class="eggs">🥚🐣🥚🐣🥚</div>
+
+    <!-- SIGNATURES -->
+    <div class="sig-section">
+      <div class="sig-title">Με εκτίμηση, η Ηγετική Ομάδα</div>
+      <div class="sig-grid">
+        <div class="sig-item">
+          <span class="sig-name">Christopoulos Ntinos</span>
+          <span class="sig-role">CEO &amp; Co-founder</span>
+        </div>
+        <div class="sig-item">
+          <span class="sig-name">Tsitouras Nikos</span>
+          <span class="sig-role">COO</span>
+        </div>
+        <div class="sig-item">
+          <span class="sig-name">Skount</span>
+          <span class="sig-role">CTO</span>
+        </div>
+        <div class="sig-item">
+          <span class="sig-name">Kratimenos Andreas</span>
+          <span class="sig-role">CDO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="f-logo">Accenture Tripoli Tech Hub</div>
+      <div class="f-sub">Peloponissos Operations</div>
+    </div>
+    <div class="f-date">Πάσχα 2025<br/>Χριστός Ανέστη!</div>
+  </div>
+
+</div>
+</body>
+</html>
