@@ -1,3 +1,289 @@
+
+Claude finished the response
+
+<!DOCTYPE html> <html lang="el"> <head> <meta charset="UTF-8"/> <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <title>Accenture Tripoli Tech Hub — Company Booklet</title> <style> @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=
+
+pasted
+
+add new CFO in the page. Her name is Tripolina Roxani. also create a PDF contract for her to sign with like 20 random checkboxes she has to check. the only prerequisite is that she has to rename herself from Patrina to Tripolina
+
+9:26 AM
+I'll add the new CFO to the booklet and create a contract PDF for her.
+
+
+Viewed 2 files
+Viewed 2 files
+The contract needs interactive checkboxes she can actually check, so I'll read FORMS.md.
+
+
+Read FORMS.md for creating fillable checkboxes
+Read FORMS.md for creating fillable checkboxes
+I'll build the contract with interactive (fillable) checkboxes directly using reportlab's acroform, which is the cleanest approach for a contract that needs to be signed/checked. Let me first add the CFO to the booklet, then create the PDF.
+
+
+Locate the uploaded booklet HTML file
+Locate the uploaded booklet HTML file
+The file wasn't uploaded as a separate file—it's in the document context. I'll recreate it with the CFO added. Let me write the booklet with Tripolina Roxani added as CFO.
+
+
+Prep working directory
+Prep working directory
+I have the full HTML from the document. I'll create the modified version: change the org tag to "5 leaders", add a CFO box to the SVG org chart, add a CFO leader card, and update the leadership SVG layout. Let me write the full file with the CFO additions.
+
+
+Create the booklet HTML with new CFO Tripolina Roxani added to org chart and leadership cards
+Create the booklet HTML with new CFO Tripolina Roxani added to org chart and leadership cards
+Booklet updated. Now the contract PDF with 20 fillable checkboxes and the rename prerequisite. I'll use reportlab's AcroForm for real interactive checkboxes.
+
+
+Ran 2 commands, created a file
+Ran 2 commands, created a file
+Let me verify the PDF renders correctly and the checkboxes are fillable.
+
+
+Verify field count and check poppler availability for rendering
+Verify field count and check poppler availability for rendering
+21 checkboxes (20 clause checkboxes + 1 final confirmation) and the text fields are all there. Let me render the pages to confirm the layout looks clean.
+
+
+Viewed 3 files, ran a command
+Viewed 3 files, ran a command
+Both look clean. Let me preview the updated booklet leadership page to confirm the CFO landed correctly in the org chart.
+
+
+Verify CFO placement in booklet org chart
+Verify CFO placement in booklet org chart
+Both files are ready.
+
+
+Presented 2 files
+Presented 2 files
+Done. Two deliverables:
+
+Booklet — Tripolina Roxani is now the CFO. She's added to the org chart on the Leadership page as a fifth box (highlighted in lime to match her "TR" avatar), the org tag now reads "5 leaders · 1 mission", and she has her own leadership card ("Counts every cent (and negroni)"). The four reports now sit evenly under the CEO.
+
+Contract — a 4-page CFO Appointment Agreement with real fillable form fields:
+
+Page 1 states the mandatory prerequisite: she must rename herself from Patrina to Tripolina, with a text box for the new first name. No clause is valid until that's done.
+Pages 2–3 hold the 20 interactive checkboxes (clause #1 is the rename confirmation, the rest cover CFO duties — financial reporting, the $2.1M cash position, the no-unbudgeted-negronis rule, etc.).
+Page 4 has signature fields plus a final confirmation checkbox reading "I, formerly known as Patrina, now Tripolina Roxani, accept this appointment."
+All 21 checkboxes and 4 text fields are clickable/typeable in any standard PDF viewer.
+
+
+Cfo appointment contract tripolina roxani
+Document · PDF 
+
+Accenture tripoli booklet
+Code · HTML 
+make the pdf a 1 pager
+
+9:33 AM
+I'll condense the contract into a single page with all the form fields intact.
+
+
+Created a file, ran a command, viewed a file
+Created a file, ran a command, viewed a file
+The layout is clean, but the prerequisite box is a touch too short — the "New legal first name" field and label overlap the line above it. Let me give that box a bit more height.
+
+
+Edited a file, ran a command, viewed a file
+Edited a file, ran a command, viewed a file
+The "name field" box no longer overlaps with the text. Everything fits on one page.
+
+
+Presented file
+Presented file
+Done — now a single page. Everything's preserved: the prerequisite name field, all 20 clause checkboxes (laid out in two columns), the signature/date fields, and the final confirmation checkbox. All 21 checkboxes and 4 text fields are still fully fillable.
+
+
+Cfo appointment contract tripolina roxani
+Document · PDF 
+post also an announcement in the booklet, celebrating our new CFO
+
+10:16 AM
+I'll add a celebratory CFO announcement to the booklet. Let me view the current file to place it well.
+
+
+Find anchor points to insert the announcement page
+Find anchor points to insert the announcement page
+I'll add CSS for the announcement and insert a new page right after the Leadership page (line 905 area). Since this adds a page, I'll update the page count from 05 to 06 across all pages. First, the CSS — let me view around the org/leader CSS block to add new styles.
+
+
+Viewed 2 files, edited a file
+Viewed 2 files, edited a file
+Now insert the announcement page after the Leadership page. Let me view the end of the Leadership page.
+
+
+Viewed 2 files, edited a file
+Viewed 2 files, edited a file
+Now update the page numbers. The Q2 report page was "PAGE 05 / 05" and should become "PAGE 06 / 06", and all other pages need their "/ 05" updated to "/ 06".
+
+
+Ran 2 commands
+Ran 2 commands
+All page numbers now run 02 through 06 (the cover is unnumbered). Let me render the announcement page to confirm it looks good. I'll use a headless browser approach via Python, or just spot-check the HTML structure renders. Since network is off and no browser is available, let me verify the HTML is well-formed and copy to outputs.
+
+
+Sanity-check HTML and copy to outputs
+Sanity-check HTML and copy to outputs
+The "page blocks: 17" counts CSS class definitions too; the actual page count is fine. Let me render it visually to be sure the announcement looks polished. I'll try wkhtmltoimage or a quick chromium check.
+
+
+Ran 2 commands
+Ran 2 commands
+wkhtmltoimage rendered despite the (harmless) font-CDN network warning. The announcement is page 5 of 6. Let me crop to that region to verify.
+
+
+Ran a command, viewed a file
+Ran a command, viewed a file
+The announcement renders cleanly — CEO message, mandate/effective/office fact cards, and the page footer ("Welcome, Tripolina!") all look right, and it flows correctly into the Q2 report as page 06. Let me grab the top portion to confirm the headline and hero card.
+
+
+Ran a command, viewed a file
+Ran a command, viewed a file
+The crop offset clipped the very top (header band + headline sit just above this window), but the rendered full-page earlier confirmed the structure is intact. The hero card with the "TR" portrait, the gold tagline, and everything below render correctly.
+
+The announcement is live in the booklet.
+
+
+Presented file
+Presented file
+Done. There's now a dedicated Announcement page (Page 05 of 06) in the booklet celebrating the new CFO. It includes:
+
+A festive headline — "Please welcome our new CFO 🎉" — with confetti accents and a "Leadership Update · FY2026" pill.
+A hero card featuring Tripolina Roxani's "TR" badge, her title, and the tagline "Counts every cent — and every negroni — so the rest of us don't have to."
+A note from the CEO (Christopoulos Ntinos) welcoming her, tying in the $4.83M net revenue and the warm Peloponissos welcome, signed off in the same Caveat script used elsewhere in the booklet.
+Three fact cards: her mandate (finance, treasury & reporting), effective date (FY2026), and home base (Kallisto Lounge Bar & Bistro).
+All page numbers were renumbered to run 02–06, so the Q2 Financial Report is now correctly the final page (06/06).
+
+
+Accenture tripoli booklet
+Code · HTML 
+the announcements should be on the first pages. 
+also for tsitouras add nickname "The Analyst"
+
+11:09 AM
+I'll move the announcement page up front and add the nickname for Tsitouras.
+
+
+Locate page markers, announcement block, and Tsitouras entries
+Locate page markers, announcement block, and Tsitouras entries
+Let me view the structure around the cover and team page start, plus the full announcement block, to plan the move.
+
+
+Viewed 2 files
+Viewed 2 files
+Now I'll do this in steps. First, remove the announcement block from its current position (lines 991-1067, keeping line 990's </div> for the Leadership page close and going straight to the Q2 comment).
+
+
+Remove announcement page from its current position after Leadership
+Remove announcement page from its current position after Leadership
+Now insert the announcement right after the cover (it becomes Page 02), with updated page number and footer.
+
+
+Insert announcement page right after the cover as Page 02
+Insert announcement page right after the cover as Page 02
+Now renumber the remaining pages. Order is now: Cover, Announcement (02), Team (03), HQ (04), Leadership (05), Q2 (06). Let me check current page-num markers and footers.
+
+
+List page number markers in order
+List page number markers in order
+I see the current markers in document order: line 667 = Announcement (correctly 02), line 744 = Team (currently 02, should be 03), line 806 = HQ (currently 03, should be 04), line 910 = Leadership (currently 04, should be 05), line 1075 = Q2 (correctly 06). Let me update each by its line context. I'll view the footers too.
+
+
+Ran 2 commands
+Ran 2 commands
+Page numbering is now correct: 02 Announcement, 03 Team, 04 HQ, 05 Leadership, 06 Q2. Now add Tsitouras's nickname "The Analyst" in both the org chart SVG and his leader card.
+
+
+Viewed 2 files
+Viewed 2 files
+I'll move Tsitouras's name up slightly and add "The Analyst" nickname below the COO label in the SVG box.
+
+
+Add The Analyst nickname to Tsitouras COO box in SVG
+Add The Analyst nickname to Tsitouras COO box in SVG
+Now the leader card for Tsitouras.
+
+
+Viewed a file, edited a file
+Viewed a file, edited a file
+Now render to verify the new order and the nickname.
+
+
+Ran 2 commands, viewed a file
+Ran 2 commands, viewed a file
+The announcement is now Page 02 (right after the cover), footer reads "Page 02 · Welcome, Tripolina!", and it flows straight into "Our Team · Page 03/06". Now let me verify the Leadership page shows the nickname.
+
+
+Verify Tsitouras nickname on leadership page
+Verify Tsitouras nickname on leadership page
+Both placements look great. The org chart box shows Tsitouras Nikos / COO / "The Analyst" in lime italic, and the leader card reads Tsitouras Nikos · "The Analyst". Leadership is page 05, flowing into Q2 as page 06. Let me copy the final file to outputs.
+
+
+Ran a command, read a file
+Ran a command, read a file
+Both changes are in:
+
+Announcement moved up front — the CFO celebration is now Page 02, immediately after the cover. The rest of the booklet shifted down accordingly: Our Team (03), Our HQ (04), Leadership (05), Q2 Financial Report (06). All page numbers and footers are updated to match.
+
+Tsitouras nickname — "The Analyst" now appears in both spots on the Leadership page: under his name in the org-chart box (lime italic) and on his leader card as Tsitouras Nikos · "The Analyst".
+
+
+Accenture tripoli booklet
+Code · HTML 
+Tripolina has a weird way of thinking. our tech hub wont have money for usefull things like pens and papers or laptops, but we will all have LV bags etc.
+
+11:11 AM
+Ha — Tripolina's priorities are certainly... distinctive. A CFO who'll cut the laptop budget but make sure everyone's carrying a Louis Vuitton to the standup. Want me to work that running joke into the booklet somewhere?
+
+A few fun ways it could land:
+
+A line in her announcement tagline or the CEO's note — something like "redefining what counts as essential office equipment."
+
+A tweak to the HQ "perks" section — swap a perk for something like "🛍️ Designer-bag dress code" or "Monogram-only meeting rooms."
+
+A cheeky footnote on the Q2 report — e.g. an expense line for "Strategic Leather Goods" sitting suspiciously high while "Stationery & Hardware" is near zero.
+
+A "From the CFO's desk" mini-section listing her unconventional budget philosophy.
+
+Which direction appeals, or should I just pick the funniest one and run with it? I'll keep it clearly satirical so it reads as an in-joke rather than anything official.
+
+change "Counts every cent — and every negroni — so the rest of us don't have to." mention the LV bags etc
+
+11:27 AM
+I'll update her tagline to work in the LV bags joke.
+
+
+Ran a command, edited a file
+Ran a command, edited a file
+I'll also align her leader-card tag so the joke is consistent.
+
+
+Edited a file, ran a command, viewed a file
+Edited a file, ran a command, viewed a file
+The tagline now reads the LV joke and wraps cleanly across two lines in the hero card. Copying the final file to outputs.
+
+
+Ran a command, read a file
+Ran a command, read a file
+Done. Her hero-card tagline now reads: "Why budget for laptops and pens when the whole team could be carrying Louis Vuitton? Priorities."
+
+I also matched her leader-card tag to keep the joke consistent: "No budget for pens, but everyone gets an LV bag."
+
+
+Accenture tripoli booklet
+Code · HTML 
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+
+raw
+Accenture tripoli booklet · HTML
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -6,7 +292,7 @@
 <title>Accenture Tripoli Tech Hub — Company Booklet</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;700&display=swap');
-
+ 
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --ink:#1a0030;
@@ -31,7 +317,7 @@ body{
     #0d001a;
   display:flex;flex-direction:column;align-items:center;gap:0;padding:32px 0;min-height:100vh;
 }
-
+ 
 /* ─── PAGE SHELL ─── */
 .page{
   width:794px; min-height:1123px;
@@ -43,7 +329,7 @@ body{
   box-shadow:0 20px 60px rgba(0,0,0,0.5), 0 4px 16px rgba(161,0,255,0.15);
   border-radius:6px;
 }
-
+ 
 /* ══════════════════════════════════
    PAGE 1 — COVER (more fun, layered)
 ══════════════════════════════════ */
@@ -153,7 +439,7 @@ body{
 .cover-bottom .arrow{
   color:var(--lime);font-weight:600;font-family:'Space Grotesk',sans-serif;
 }
-
+ 
 /* ══════════════════════════════════
    PAGE HEADER (shared)
 ══════════════════════════════════ */
@@ -187,9 +473,9 @@ body{
   letter-spacing:2px;text-align:right;
 }
 .page-header-bar .ph-logo small{display:block;font-weight:400;font-size:9px;color:rgba(255,255,255,0.45);margin-top:3px;letter-spacing:1px;}
-
+ 
 .page-body{padding:40px 48px;}
-
+ 
 /* ══════════════════════════════════
    PAGE 2 — OUR TEAM
 ══════════════════════════════════ */
@@ -214,7 +500,7 @@ body{
   font-size:10px;color:var(--grape);font-weight:600;text-transform:uppercase;
   letter-spacing:0.8px;margin-top:6px;
 }
-
+ 
 .team-photo-wrap{
   width:100%;height:380px;
   border-radius:14px;overflow:hidden;
@@ -250,7 +536,7 @@ body{
   background:rgba(0,0,0,0.3);padding:3px 8px;border-radius:4px;
   font-size:11px;color:var(--lime);
 }
-
+ 
 .photo-caption-bar{
   position:absolute;left:20px;right:20px;bottom:20px;z-index:2;
   display:flex;justify-content:space-between;align-items:flex-end;
@@ -261,7 +547,7 @@ body{
   font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase;
   padding:4px 10px;background:rgba(0,0,0,0.4);border-radius:100px;backdrop-filter:blur(8px);
 }
-
+ 
 .team-caption{
   margin-top:22px;
   background:linear-gradient(135deg, var(--cream), var(--mist));
@@ -277,7 +563,7 @@ body{
 }
 .team-caption p{font-size:13px;color:var(--plum);line-height:1.7;}
 .team-caption strong{color:var(--violet);}
-
+ 
 /* ══════════════════════════════════
    PAGE 3 — ORG CHART
 ══════════════════════════════════ */
@@ -296,7 +582,7 @@ body{
   color:var(--violet);background:var(--mist);padding:5px 12px;border-radius:100px;
 }
 .org-svg-wrap svg{width:100%;height:auto;}
-
+ 
 /* Leadership cards below chart */
 .leader-grid{
   display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px;
@@ -321,7 +607,90 @@ body{
 .leader-info .leader-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--ink);}
 .leader-info .leader-role{font-size:10px;color:var(--grape);text-transform:uppercase;letter-spacing:0.8px;margin-top:2px;font-weight:600;}
 .leader-info .leader-tag{font-size:10px;color:#888;margin-top:3px;font-style:italic;}
-
+ 
+/* ══════════════════════════════════
+   ANNOUNCEMENT PAGE — NEW CFO
+══════════════════════════════════ */
+.ann-body{padding:40px 48px;position:relative;}
+.ann-confetti{position:absolute;border-radius:2px;opacity:0.85;}
+.ann-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--violet);background:var(--mist);
+  border:1px solid var(--lilac);
+  padding:7px 16px;border-radius:100px;margin-bottom:22px;
+}
+.ann-pill .spark{width:7px;height:7px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon);}
+.ann-headline{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:40px;font-weight:700;color:var(--ink);letter-spacing:-1.5px;
+  line-height:1.05;margin-bottom:10px;
+}
+.ann-headline .grad{
+  background:linear-gradient(135deg, var(--violet), var(--neon));
+  -webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;
+}
+.ann-sub{font-size:14px;color:var(--grape);font-weight:400;margin-bottom:30px;letter-spacing:0.2px;}
+ 
+.ann-hero-card{
+  background:linear-gradient(135deg, #2a0048 0%, #460073 55%, #A100FF 100%);
+  border-radius:18px;padding:30px 34px;
+  position:relative;overflow:hidden;
+  display:flex;gap:26px;align-items:center;
+  box-shadow:0 16px 40px rgba(70,0,115,0.3);
+  margin-bottom:28px;
+}
+.ann-hero-card::after{
+  content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;
+  border-radius:50%;background:radial-gradient(circle, rgba(194,255,61,0.25), transparent 70%);
+}
+.ann-portrait{
+  width:118px;height:118px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg, var(--lime), var(--neon));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;color:var(--plum-deep);
+  box-shadow:0 0 28px rgba(194,255,61,0.4), inset 0 -4px 10px rgba(70,0,115,0.2);
+  position:relative;z-index:2;letter-spacing:-1px;
+}
+.ann-hero-info{z-index:2;}
+.ann-hero-info .role-tag{
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--lime);margin-bottom:8px;
+}
+.ann-hero-info h3{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:30px;font-weight:700;color:#fff;letter-spacing:-1px;margin-bottom:4px;
+}
+.ann-hero-info .title-line{font-size:14px;color:var(--lilac);font-weight:500;margin-bottom:12px;}
+.ann-hero-info .tagline{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;font-style:italic;}
+ 
+.ann-message{
+  background:linear-gradient(135deg, var(--cream), var(--mist));
+  border-radius:14px;padding:24px 28px;margin-bottom:24px;position:relative;
+}
+.ann-message .from{
+  font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.5px;color:var(--violet);margin-bottom:12px;
+}
+.ann-message p{font-size:13px;color:#444;line-height:1.75;margin-bottom:10px;}
+.ann-message p:last-child{margin-bottom:0;}
+.ann-message strong{color:var(--violet);font-weight:600;}
+.ann-message .sig{
+  margin-top:14px;font-family:'Caveat',cursive;font-size:24px;color:var(--plum);font-weight:700;
+}
+.ann-message .sig small{display:block;font-family:'Inter',sans-serif;font-size:10px;color:#888;font-style:normal;margin-top:2px;letter-spacing:0.5px;}
+ 
+.ann-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.ann-fact{
+  background:#fff;border:1px solid var(--mist);border-radius:12px;padding:16px;
+  position:relative;overflow:hidden;
+}
+.ann-fact::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg, var(--violet), var(--neon));}
+.ann-fact .emoji{font-size:22px;margin-bottom:8px;}
+.ann-fact .ft-label{font-size:9px;color:#888;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+.ann-fact .ft-value{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--ink);margin-top:3px;line-height:1.3;}
+ 
 /* ══════════════════════════════════
    PAGE 4 — Q2 REPORT
 ══════════════════════════════════ */
@@ -339,7 +708,7 @@ body{
 .section-title::after{
   content:'';flex:1;height:1px;background:linear-gradient(90deg, var(--mist), transparent);
 }
-
+ 
 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
 .kpi-card{
   background:linear-gradient(135deg, #fff, var(--cream));
@@ -359,7 +728,7 @@ body{
 }
 .kpi-change{font-size:10px;font-weight:600;display:flex;align-items:center;gap:4px;}
 .up{color:var(--ok);}.down{color:var(--bad);}
-
+ 
 table{width:100%;border-collapse:collapse;font-size:11px;border-radius:8px;overflow:hidden;}
 thead tr{background:linear-gradient(90deg, var(--plum), var(--grape));color:#fff;}
 thead th{padding:10px 12px;text-align:left;font-weight:600;font-size:10px;letter-spacing:0.5px;text-transform:uppercase;font-family:'Space Grotesk',sans-serif;}
@@ -372,7 +741,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
 .subtotal-row td{font-weight:600;font-style:italic;color:#555;background:#fdf9ff!important;}
 .indent{padding-left:24px!important;color:#555;font-style:normal!important;}
 .green{color:var(--ok);font-weight:600;}.red{color:var(--bad);font-weight:600;}
-
+ 
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
 .bar-row{margin-bottom:10px;}
 .bar-label{display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px;}
@@ -384,7 +753,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
   background:linear-gradient(90deg, var(--violet), var(--neon));
   box-shadow:0 0 12px rgba(255,61,242,0.3);
 }
-
+ 
 /* ══════════════════════════════════
    PAGE 5 — OUR HQ (Kallisto)
 ══════════════════════════════════ */
@@ -439,7 +808,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
   font-size:14px;color:rgba(255,255,255,0.85);margin-top:8px;
   font-weight:300;letter-spacing:0.5px;
 }
-
+ 
 .hq-body{padding:32px 48px;}
 .hq-meta-row{
   display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;
@@ -458,7 +827,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
 }
 .hq-meta-card .label{font-size:9px;color:#888;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;}
 .hq-meta-card .value{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--ink);margin-top:3px;line-height:1.3;}
-
+ 
 .hq-story{
   background:linear-gradient(135deg, var(--cream), var(--mist));
   border-radius:14px;padding:24px 28px;margin-bottom:24px;
@@ -477,7 +846,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
 .hq-story p{font-size:13px;color:#444;line-height:1.75;margin-bottom:10px;}
 .hq-story p:last-child{margin-bottom:0;}
 .hq-story strong{color:var(--violet);font-weight:600;}
-
+ 
 .hq-perks{
   display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
 }
@@ -489,7 +858,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
 .hq-perk .emoji{font-size:20px;}
 .hq-perk .perk-text{font-size:12px;color:#444;line-height:1.4;}
 .hq-perk .perk-text strong{color:var(--plum);font-weight:600;}
-
+ 
 .hq-quote{
   margin-top:22px;
   padding:18px 24px;
@@ -507,7 +876,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
   font-weight:500;flex:1;z-index:1;
 }
 .hq-quote .q-text span{color:var(--gold);font-weight:700;}
-
+ 
 /* ══════════════════════════════════
    SHARED PAGE FOOTER
 ══════════════════════════════════ */
@@ -526,7 +895,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
 </style>
 </head>
 <body>
-
+ 
 <!-- ═══════════════════════════════════════
      PAGE 1 — COVER
 ════════════════════════════════════════ -->
@@ -537,7 +906,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
   <div class="cover-dot" style="width:6px;height:6px;background:var(--lime);top:120px;right:180px;box-shadow:0 0 16px var(--lime);"></div>
   <div class="cover-dot" style="width:4px;height:4px;background:var(--neon);bottom:200px;right:120px;box-shadow:0 0 12px var(--neon);"></div>
   <div class="cover-dot" style="width:5px;height:5px;background:var(--gold);top:280px;left:140px;box-shadow:0 0 14px var(--gold);"></div>
-
+ 
   <div class="cover-tag">
     <span class="pulse"></span>
     <span>Accenture · Tripoli Tech Hub</span>
@@ -574,21 +943,98 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
     <span class="arrow">→ flip the page</span>
   </div>
 </div>
-
+ 
 <!-- ═══════════════════════════════════════
-     PAGE 2 — OUR TEAM
+     PAGE 2 — ANNOUNCEMENT: NEW CFO
 ════════════════════════════════════════ -->
 <div class="page">
   <div class="page-header-bar">
     <div>
-      <div class="ph-num">PAGE 02 / 05</div>
+      <div class="ph-num">PAGE 02 / 06</div>
+      <div class="ph-title">Announcement</div>
+      <div class="ph-sub">Big news from the Tech Hub</div>
+    </div>
+    <div class="ph-logo">ACCENTURE<small>TRIPOLI · GR</small></div>
+  </div>
+  <div class="ann-body">
+    <!-- confetti -->
+    <div class="ann-confetti" style="width:8px;height:14px;background:var(--neon);top:24px;left:120px;transform:rotate(25deg);"></div>
+    <div class="ann-confetti" style="width:7px;height:7px;border-radius:50%;background:var(--lime);top:60px;right:90px;"></div>
+    <div class="ann-confetti" style="width:6px;height:12px;background:var(--gold);top:18px;right:200px;transform:rotate(-18deg);"></div>
+    <div class="ann-confetti" style="width:7px;height:7px;border-radius:50%;background:var(--violet);top:90px;left:60px;"></div>
+    <div class="ann-confetti" style="width:8px;height:8px;border-radius:50%;background:var(--gold);top:40px;right:40px;"></div>
+ 
+    <div class="ann-pill"><span class="spark"></span> Leadership Update · FY2026</div>
+ 
+    <h1 class="ann-headline">Please welcome our<br/>new <span class="grad">CFO</span> 🎉</h1>
+    <p class="ann-sub">A new chapter for the numbers behind the Tech Hub.</p>
+ 
+    <div class="ann-hero-card">
+      <div class="ann-portrait">TR</div>
+      <div class="ann-hero-info">
+        <div class="role-tag">Chief Financial Officer</div>
+        <h3>Tripolina Roxani</h3>
+        <div class="title-line">Joining the Executive Leadership Team</div>
+        <div class="tagline">"Why budget for laptops and pens when the whole team could be carrying Louis Vuitton? Priorities."</div>
+      </div>
+    </div>
+ 
+    <div class="ann-message">
+      <div class="from">A word from the CEO</div>
+      <p>
+        It's my great pleasure to announce that <strong>Tripolina Roxani</strong> has joined
+        Accenture Tripoli Tech Hub as our <strong>Chief Financial Officer</strong>. Tripolina
+        steps in to lead financial strategy, reporting, and treasury across all twelve of our
+        service lines — and to keep us honest somewhere between the second espresso and the
+        first negroni.
+      </p>
+      <p>
+        With net revenue at <strong>$4.83M</strong> and growing, the timing couldn't be better.
+        Please join me in giving her the warmest Peloponissos welcome. 🥂
+      </p>
+      <div class="sig">— Christopoulos Ntinos
+        <small>CEO &amp; Co-founder, Accenture Tripoli Tech Hub</small>
+      </div>
+    </div>
+ 
+    <div class="ann-facts">
+      <div class="ann-fact">
+        <div class="emoji">📊</div>
+        <div class="ft-label">Mandate</div>
+        <div class="ft-value">Finance, treasury &amp; reporting</div>
+      </div>
+      <div class="ann-fact">
+        <div class="emoji">📅</div>
+        <div class="ft-label">Effective</div>
+        <div class="ft-value">FY2026 · Peloponissos Ops</div>
+      </div>
+      <div class="ann-fact">
+        <div class="emoji">🍸</div>
+        <div class="ft-label">Office</div>
+        <div class="ft-value">Kallisto Lounge Bar &amp; Bistro</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="pf-logo">ACCENTURE <span class="pf-dot">●</span> TRIPOLI</span>
+    <span>Announcement · Page 02 · Welcome, Tripolina!</span>
+  </div>
+</div>
+ 
+<!-- ═══════════════════════════════════════
+     PAGE 3 — OUR TEAM
+════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header-bar">
+    <div>
+      <div class="ph-num">PAGE 03 / 06</div>
       <div class="ph-title">Our Team</div>
       <div class="ph-sub">The humans behind the keyboards</div>
     </div>
     <div class="ph-logo">ACCENTURE<small>TRIPOLI · GR</small></div>
   </div>
   <div class="page-body">
-
+ 
     <div class="team-stats-row">
       <div class="team-stat">
         <div class="team-stat-num">214</div>
@@ -607,7 +1053,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         <div class="team-stat-label">Coffees / Day</div>
       </div>
     </div>
-
+ 
     <div class="team-photo-wrap">
       <img src="tech_hub_pic.jpeg" alt="Team Photo"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
@@ -621,7 +1067,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         <div class="pc-meta">Shot on a Tuesday</div>
       </div>
     </div>
-
+ 
     <div class="team-caption">
       <div class="quote-mark">"</div>
       <p>
@@ -633,23 +1079,23 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
   </div>
   <div class="page-footer">
     <span class="pf-logo">ACCENTURE <span class="pf-dot">●</span> TRIPOLI</span>
-    <span>Our Team · Page 02</span>
+    <span>Our Team · Page 03</span>
   </div>
 </div>
-
+ 
 <!-- ═══════════════════════════════════════
      PAGE 5 — OUR HQ (Kallisto Lounge Bar & Bistro)
 ════════════════════════════════════════ -->
 <div class="page">
   <div class="page-header-bar">
     <div>
-      <div class="ph-num">PAGE 03 / 05</div>
+      <div class="ph-num">PAGE 04 / 06</div>
       <div class="ph-title">Our HQ</div>
       <div class="ph-sub">Where strategy meets... a really good espresso martini</div>
     </div>
     <div class="ph-logo">ACCENTURE<small>TRIPOLI · GR</small></div>
   </div>
-
+ 
   <div class="hq-hero">
     <div class="hq-hero-content">
       <div class="hq-tag">📍 Headquarters · Established 2026</div>
@@ -657,7 +1103,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
       <p>Tripolis · Peloponissos · Greece</p>
     </div>
   </div>
-
+ 
   <div class="hq-body">
     <div class="hq-meta-row">
       <div class="hq-meta-card">
@@ -682,7 +1128,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         </div>
       </div>
     </div>
-
+ 
     <div class="hq-story">
       <div class="hq-story-label">A few words about home</div>
       <h3>The unofficial-official HQ of the Tech Hub</h3>
@@ -699,7 +1145,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         <strong>team</strong>.
       </p>
     </div>
-
+ 
     <div class="hq-perks">
       <div class="hq-perk">
         <div class="emoji">☕</div>
@@ -726,7 +1172,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         <div class="perk-text"><strong>Garden terrace</strong><br/>For when JIRA wins</div>
       </div>
     </div>
-
+ 
     <div class="hq-quote">
       <div class="q-text">
         "The office isn't a place — it's <span>the people you build with</span>,
@@ -734,20 +1180,20 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
       </div>
     </div>
   </div>
-
+ 
   <div class="page-footer">
     <span class="pf-logo">ACCENTURE <span class="pf-dot">●</span> TRIPOLI</span>
-    <span>Our HQ · Page 03 · Kallisto Lounge Bar &amp; Bistro</span>
+    <span>Our HQ · Page 04 · Kallisto Lounge Bar &amp; Bistro</span>
   </div>
 </div>
-
+ 
 <!-- ═══════════════════════════════════════
      PAGE 3 — ORG CHART
 ════════════════════════════════════════ -->
 <div class="page">
   <div class="page-header-bar">
     <div>
-      <div class="ph-num">PAGE 04 / 05</div>
+      <div class="ph-num">PAGE 05 / 06</div>
       <div class="ph-title">Leadership</div>
       <div class="ph-sub">Who calls the shots (and writes the slides)</div>
     </div>
@@ -759,11 +1205,11 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         <h3>Executive Leadership Team</h3>
         <p>Organizational structure · effective FY2026</p>
       </div>
-      <div class="org-tag">4 leaders · 1 mission</div>
+      <div class="org-tag">5 leaders · 1 mission</div>
     </div>
-
+ 
     <div class="org-svg-wrap">
-      <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="topbar" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="#460073"/>
@@ -778,6 +1224,10 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
             <stop offset="0%" stop-color="#3d0066"/>
             <stop offset="100%" stop-color="#1f0040"/>
           </linearGradient>
+          <linearGradient id="cfobox" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#5a1a7a"/>
+            <stop offset="100%" stop-color="#2e0a50"/>
+          </linearGradient>
           <filter id="softshadow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
             <feOffset dx="0" dy="3"/>
@@ -785,12 +1235,12 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
             <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
         </defs>
-
+ 
         <!-- top bar -->
         <rect x="50" y="10" width="600" height="28" rx="6" fill="url(#topbar)"/>
         <circle cx="68" cy="24" r="3" fill="#c2ff3d"/>
         <text x="350" y="28" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600" fill="#fff" letter-spacing="2.5">ACCENTURE TRIPOLI TECH HUB · LEADERSHIP</text>
-
+ 
         <!-- CEO box -->
         <rect x="240" y="60" width="220" height="72" rx="12" fill="url(#ceobox)" stroke="#A100FF" stroke-width="1.5" filter="url(#softshadow)"/>
         <rect x="240" y="60" width="220" height="6" rx="3" fill="#A100FF"/>
@@ -799,49 +1249,61 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         <text x="350" y="84" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="600" fill="#fff">Christopoulos Ntinos</text>
         <text x="350" y="108" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="10" fill="#d4aaff" letter-spacing="1.2">CEO &amp; CO-FOUNDER</text>
         <rect x="290" y="118" width="120" height="8" rx="4" fill="#A100FF" opacity="0.15"/>
-
+ 
         <!-- vertical line down from CEO -->
         <line x1="350" y1="132" x2="350" y2="170" stroke="#A100FF" stroke-width="1.5" opacity="0.5" stroke-dasharray="2 3"/>
         <!-- horizontal bar -->
-        <line x1="110" y1="170" x2="590" y2="170" stroke="#A100FF" stroke-width="1.5" opacity="0.35" stroke-dasharray="2 3"/>
-        <!-- drops -->
-        <line x1="110" y1="170" x2="110" y2="200" stroke="#A100FF" stroke-width="1.5" opacity="0.35" stroke-dasharray="2 3"/>
-        <line x1="350" y1="170" x2="350" y2="200" stroke="#A100FF" stroke-width="1.5" opacity="0.35" stroke-dasharray="2 3"/>
-        <line x1="590" y1="170" x2="590" y2="200" stroke="#A100FF" stroke-width="1.5" opacity="0.35" stroke-dasharray="2 3"/>
-
+        <line x1="92" y1="170" x2="608" y2="170" stroke="#A100FF" stroke-width="1.5" opacity="0.35" stroke-dasharray="2 3"/>
+        <!-- drops (4 reports) -->
+        <line x1="92" y1="170" x2="92" y2="200" stroke="#A100FF" stroke-width="1.5" opacity="0.35" stroke-dasharray="2 3"/>
+        <line x1="264" y1="170" x2="264" y2="200" stroke="#A100FF" stroke-width="1.5" opacity="0.35" stroke-dasharray="2 3"/>
+        <line x1="436" y1="170" x2="436" y2="200" stroke="#A100FF" stroke-width="1.5" opacity="0.35" stroke-dasharray="2 3"/>
+        <line x1="608" y1="170" x2="608" y2="200" stroke="#A100FF" stroke-width="1.5" opacity="0.35" stroke-dasharray="2 3"/>
+ 
         <!-- COO -->
-        <rect x="30" y="200" width="160" height="72" rx="12" fill="url(#execbox)" stroke="#7B2D8B" stroke-width="1" filter="url(#softshadow)"/>
-        <rect x="30" y="200" width="160" height="5" rx="2" fill="#7B2D8B"/>
-        <circle cx="52" cy="224" r="10" fill="#7B2D8B" opacity="0.35"/>
-        <text x="52" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="#c2ff3d">TN</text>
-        <text x="120" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500" fill="#fff">Tsitouras Nikos</text>
-        <text x="110" y="248" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#d4aaff" letter-spacing="1">COO</text>
-        <rect x="50" y="258" width="120" height="8" rx="4" fill="#A100FF" opacity="0.15"/>
-
+        <rect x="22" y="200" width="140" height="72" rx="12" fill="url(#execbox)" stroke="#7B2D8B" stroke-width="1" filter="url(#softshadow)"/>
+        <rect x="22" y="200" width="140" height="5" rx="2" fill="#7B2D8B"/>
+        <circle cx="42" cy="224" r="10" fill="#7B2D8B" opacity="0.35"/>
+        <text x="42" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="#c2ff3d">TN</text>
+        <text x="100" y="220" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500" fill="#fff">Tsitouras Nikos</text>
+        <text x="92" y="240" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#d4aaff" letter-spacing="1">COO</text>
+        <text x="92" y="254" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="8" font-style="italic" fill="#c2ff3d" letter-spacing="0.5">"The Analyst"</text>
+        <rect x="42" y="262" width="100" height="6" rx="3" fill="#A100FF" opacity="0.15"/>
+ 
         <!-- CTO -->
-        <rect x="270" y="200" width="160" height="72" rx="12" fill="url(#execbox)" stroke="#7B2D8B" stroke-width="1" filter="url(#softshadow)"/>
-        <rect x="270" y="200" width="160" height="5" rx="2" fill="#7B2D8B"/>
-        <circle cx="292" cy="224" r="10" fill="#7B2D8B" opacity="0.35"/>
-        <text x="292" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="#c2ff3d">SK</text>
-        <text x="360" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500" fill="#fff">Skount</text>
-        <text x="350" y="248" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#d4aaff" letter-spacing="1">CTO</text>
-        <rect x="290" y="258" width="120" height="8" rx="4" fill="#A100FF" opacity="0.15"/>
-
+        <rect x="194" y="200" width="140" height="72" rx="12" fill="url(#execbox)" stroke="#7B2D8B" stroke-width="1" filter="url(#softshadow)"/>
+        <rect x="194" y="200" width="140" height="5" rx="2" fill="#7B2D8B"/>
+        <circle cx="214" cy="224" r="10" fill="#7B2D8B" opacity="0.35"/>
+        <text x="214" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="#c2ff3d">SK</text>
+        <text x="272" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500" fill="#fff">Skount</text>
+        <text x="264" y="248" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#d4aaff" letter-spacing="1">CTO</text>
+        <rect x="214" y="258" width="100" height="8" rx="4" fill="#A100FF" opacity="0.15"/>
+ 
+        <!-- CFO (NEW) -->
+        <rect x="366" y="200" width="140" height="72" rx="12" fill="url(#cfobox)" stroke="#c2ff3d" stroke-width="1.2" filter="url(#softshadow)"/>
+        <rect x="366" y="200" width="140" height="5" rx="2" fill="#c2ff3d"/>
+        <circle cx="386" cy="224" r="10" fill="#c2ff3d" opacity="0.3"/>
+        <text x="386" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="#c2ff3d">TR</text>
+        <text x="444" y="222" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500" fill="#fff">Tripolina</text>
+        <text x="444" y="235" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500" fill="#fff">Roxani</text>
+        <text x="436" y="252" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#c2ff3d" letter-spacing="1">CFO</text>
+        <rect x="386" y="260" width="100" height="6" rx="3" fill="#c2ff3d" opacity="0.18"/>
+ 
         <!-- CDO -->
-        <rect x="510" y="200" width="160" height="72" rx="12" fill="url(#execbox)" stroke="#7B2D8B" stroke-width="1" filter="url(#softshadow)"/>
-        <rect x="510" y="200" width="160" height="5" rx="2" fill="#7B2D8B"/>
-        <circle cx="532" cy="224" r="10" fill="#7B2D8B" opacity="0.35"/>
-        <text x="532" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="#c2ff3d">KA</text>
-        <text x="602" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="12" font-weight="500" fill="#fff">Kratimenos A.</text>
-        <text x="590" y="248" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#d4aaff" letter-spacing="1">CDO</text>
-        <rect x="530" y="258" width="120" height="8" rx="4" fill="#A100FF" opacity="0.15"/>
-
+        <rect x="538" y="200" width="140" height="72" rx="12" fill="url(#execbox)" stroke="#7B2D8B" stroke-width="1" filter="url(#softshadow)"/>
+        <rect x="538" y="200" width="140" height="5" rx="2" fill="#7B2D8B"/>
+        <circle cx="558" cy="224" r="10" fill="#7B2D8B" opacity="0.35"/>
+        <text x="558" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="9" font-weight="700" fill="#c2ff3d">KA</text>
+        <text x="616" y="224" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="500" fill="#fff">Kratimenos A.</text>
+        <text x="608" y="248" text-anchor="middle" dominant-baseline="central" font-family="Inter,sans-serif" font-size="9" fill="#d4aaff" letter-spacing="1">CDO</text>
+        <rect x="558" y="258" width="100" height="8" rx="4" fill="#A100FF" opacity="0.15"/>
+ 
         <!-- footer line -->
-        <line x1="50" y1="305" x2="650" y2="305" stroke="#ede5f8" stroke-width="0.8"/>
-        <text x="350" y="322" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="9" fill="#aaa" letter-spacing="1.5">PELOPONISSOS OPERATIONS · FY2026</text>
+        <line x1="50" y1="320" x2="650" y2="320" stroke="#ede5f8" stroke-width="0.8"/>
+        <text x="350" y="338" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk,sans-serif" font-size="9" fill="#aaa" letter-spacing="1.5">PELOPONISSOS OPERATIONS · FY2026</text>
       </svg>
     </div>
-
+ 
     <div class="leader-grid">
       <div class="leader-card">
         <div class="leader-avatar">CN</div>
@@ -854,7 +1316,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
       <div class="leader-card">
         <div class="leader-avatar">TN</div>
         <div class="leader-info">
-          <div class="leader-name">Tsitouras Nikos</div>
+          <div class="leader-name">Tsitouras Nikos &middot; <span style="color:var(--violet);">"The Analyst"</span></div>
           <div class="leader-role">Chief Operating Officer</div>
           <div class="leader-tag">Makes the trains run on time</div>
         </div>
@@ -865,6 +1327,14 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
           <div class="leader-name">Skount</div>
           <div class="leader-role">Chief Technology Officer</div>
           <div class="leader-tag">Speaks fluent stack-trace</div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">TR</div>
+        <div class="leader-info">
+          <div class="leader-name">Tripolina Roxani</div>
+          <div class="leader-role">Chief Financial Officer</div>
+          <div class="leader-tag">No budget for pens, but everyone gets an LV bag</div>
         </div>
       </div>
       <div class="leader-card">
@@ -879,24 +1349,24 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
   </div>
   <div class="page-footer">
     <span class="pf-logo">ACCENTURE <span class="pf-dot">●</span> TRIPOLI</span>
-    <span>Leadership · Page 04</span>
+    <span>Leadership · Page 05</span>
   </div>
 </div>
-
+ 
 <!-- ═══════════════════════════════════════
      PAGE 4 — Q2 FINANCIAL REPORT
 ════════════════════════════════════════ -->
 <div class="page">
   <div class="page-header-bar">
     <div>
-      <div class="ph-num">PAGE 05 / 05</div>
+      <div class="ph-num">PAGE 06 / 06</div>
       <div class="ph-title">Q2 Financial Report</div>
       <div class="ph-sub">Quarter ended June 30, 2025 · USD (thousands)</div>
     </div>
     <div class="ph-logo">ACCENTURE<small>TRIPOLI · GR</small></div>
   </div>
   <div class="report-body">
-
+ 
     <!-- KPIs -->
     <div class="report-section">
       <div class="section-title">Key Performance Indicators</div>
@@ -911,7 +1381,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         <div class="kpi-card"><div class="kpi-label">DSO (Days)</div><div class="kpi-value">38</div><div class="kpi-change up">▲ −4d improved</div></div>
       </div>
     </div>
-
+ 
     <!-- P&L condensed -->
     <div class="report-section">
       <div class="section-title">Income Statement — Q2 FY2025 vs Q2 FY2024</div>
@@ -932,7 +1402,7 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         </tbody>
       </table>
     </div>
-
+ 
     <!-- Revenue by Service Line -->
     <div class="report-section">
       <div class="section-title">Revenue by Service Line</div>
@@ -959,13 +1429,16 @@ tbody td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;fo
         </div>
       </div>
     </div>
-
+ 
   </div>
   <div class="page-footer">
     <span class="pf-logo">ACCENTURE <span class="pf-dot">●</span> TRIPOLI</span>
-    <span>Q2 Financial Report · Page 05 · Confidential</span>
+    <span>Q2 Financial Report · Page 06 · Confidential</span>
   </div>
 </div>
-
+ 
 </body>
 </html>
+ 
+
+
